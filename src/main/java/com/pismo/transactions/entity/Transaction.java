@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
@@ -17,8 +18,8 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long transactionId;
-    private int accountId;
+    private Long accountId;
     private int operationsTypeId;
-    private float amount;
+    private BigDecimal amount;
     private Date eventDate;
 }
