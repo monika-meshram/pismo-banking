@@ -3,6 +3,7 @@ package com.pismo.transactions.validations;
 import com.pismo.accounts.dto.AccountDto;
 import com.pismo.exceptions.AccountNotFoundException;
 import com.pismo.exceptions.InappropriateAmountException;
+import com.pismo.exceptions.InsufficientBalanceException;
 import com.pismo.exceptions.OperationNotFoundException;
 import com.pismo.transactions.constant.OperationType;
 import com.pismo.transactions.dto.TransactionDto;
@@ -46,6 +47,15 @@ public class TransactionValidator {
             }
         } else {
             throw new OperationNotFoundException("Operation with ID : " + operationTypeId + " does not exit.");
+        }
+    }
+
+    public void validateAccountBalanceForTransaction(TransactionDto transactionDto, AccountDto accountDto) {
+        BigDecimal balancePostTransaction = accountDto.getBalance().add(transactionDto.getAmount());
+        //balacePostTransaction should never be negative value
+        if(BigDecimal.ZERO.compareTo(balancePostTransaction) > 0){
+            logger.info("Insufficient funds in Account " +accountDto.getAccountId()+ " for this transaction.");
+            throw new InsufficientBalanceException("Insufficient funds in Account " +accountDto.getAccountId()+ " for this transaction.");
         }
     }
 }

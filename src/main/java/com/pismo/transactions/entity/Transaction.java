@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 @Data
@@ -21,5 +22,5 @@ public class Transaction {
     private Long accountId;
     private int operationsTypeId;
     private BigDecimal amount;
-    private Date eventDate;
+    private ZonedDateTime eventDate;
 }
