@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 @Data
@@ -30,5 +31,5 @@ public class TransactionDto {
     @Digits(integer = 4, fraction = 2, message = "Purchase/Withdrawal Amount should be less than 10000")
     private BigDecimal amount;
 
-    private Date eventDate;
+    private ZonedDateTime eventDate;
 }

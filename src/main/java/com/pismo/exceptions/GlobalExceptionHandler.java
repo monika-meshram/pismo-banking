@@ -23,7 +23,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(getErrorsMap(errors), new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler({AccountNotFoundException.class,InappropriateAmountException.class, OperationNotFoundException.class, TransactionNotFoundException.class})
+    @ExceptionHandler({AccountNotFoundException.class,InappropriateAmountException.class, OperationNotFoundException.class,
+            TransactionNotFoundException.class, InsufficientBalanceException.class})
     public ResponseEntity<Map<String, List<String>>> handleCustomException(RuntimeException ex) {
         return new ResponseEntity<>(getErrorsMap(List.of(ex.getMessage())), new HttpHeaders(), HttpStatus.UNPROCESSABLE_ENTITY);
     }

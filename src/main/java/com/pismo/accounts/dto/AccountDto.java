@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 
 @Data
 @Builder
@@ -13,5 +15,7 @@ public class AccountDto {
 
     @NotBlank(message = "Document number is mandatory")
     private String documentNumber;
+
+    private BigDecimal balance;
 
 }
