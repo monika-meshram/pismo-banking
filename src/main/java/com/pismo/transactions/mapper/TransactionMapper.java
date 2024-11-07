@@ -7,6 +7,8 @@ import com.pismo.transactions.entity.Transaction;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
@@ -16,6 +18,7 @@ public final class TransactionMapper {
                 .accountId(transactionDto.getAccountId())
                 .operationsTypeId(transactionDto.getOperationsTypeId())
                 .amount(transactionDto.getAmount())
+                .eventDate(LocalDateTime.now())
                 .build();
     }
 
