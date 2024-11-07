@@ -9,23 +9,14 @@ import com.pismo.transactions.mapper.TransactionMapper;
 import com.pismo.transactions.respository.TransactionRepository;
 import com.pismo.transactions.service.TransactionService;
 import com.pismo.transactions.validations.TransactionValidator;
-import jakarta.persistence.LockModeType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.CannotAcquireLockException;
-import org.springframework.dao.ConcurrencyFailureException;
-import org.springframework.data.jpa.repository.Lock;
-import org.springframework.retry.annotation.Backoff;
-import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.Random;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {

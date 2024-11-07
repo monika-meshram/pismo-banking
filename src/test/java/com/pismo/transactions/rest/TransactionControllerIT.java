@@ -38,21 +38,13 @@ public class TransactionControllerIT {
     TestRestTemplate restTemplate = new TestRestTemplate();
     HttpHeaders headers = new HttpHeaders();
 
-    private final Account account = Account.builder().documentNumber("123456").balance(BigDecimal.valueOf(000,2)).build();
-
-    @BeforeEach
-    public void beforeEach() {
-        this.accountRepository.save(this.account);
-    }
-
-    @AfterEach
-    public void afterEach() {
-        this.transactionRepository.deleteAll();
-        this.accountRepository.deleteAll();
-    }
 
     @Test
     public void addTransaction() {
+        //Creating transaction related account
+        Account account = Account.builder().documentNumber("123456").balance(BigDecimal.valueOf(000,2)).build();
+        this.accountRepository.save(account);
+
         TransactionDto transactionDto = TransactionDto.builder().accountId(1L).amount(BigDecimal.ONE).operationsTypeId(4).build();
 
         HttpEntity<TransactionDto> entity = new HttpEntity<>(transactionDto, headers);
