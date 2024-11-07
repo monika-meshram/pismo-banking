@@ -53,7 +53,7 @@ public class TransactionServiceTest {
        Mockito.doNothing().when(transactionValidator).validateAccountBalanceForTransaction(transactionDto, accountDto);
        Mockito.doNothing().when(transactionValidator).validateOperationType(transactionDto.getOperationsTypeId(), transactionDto.getAmount());
        Mockito.when(accountService.createAccount(accountDto)).thenReturn(1L);
-       Mockito.when(transactionRepository.save(transaction)).thenReturn(savedtransaction);
+       Mockito.when(transactionRepository.save(Mockito.any(Transaction.class))).thenReturn(savedtransaction);
 
        Long transactionId = transactionService.createTransactions(transactionDto);
 
