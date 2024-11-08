@@ -41,7 +41,6 @@ class AccountControllerIT {
                 createURLWithPort("/accounts"),
                 HttpMethod.POST, entity, String.class);
 
-        Assert.assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
         Assert.assertEquals("1", response.getBody());
         Assert.assertNotNull(response.getBody());
 

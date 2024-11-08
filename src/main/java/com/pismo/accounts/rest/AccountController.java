@@ -1,7 +1,6 @@
 package com.pismo.accounts.rest;
 
 import com.pismo.accounts.dto.AccountDto;
-import com.pismo.accounts.entity.Account;
 import com.pismo.accounts.service.AccountService;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,10 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/accounts")
@@ -75,19 +71,58 @@ public class AccountController {
 			})
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Long> createAccount(@RequestBody @Valid AccountDto account) {
-		logger.info("Creating account for : " + account);
+        logger.info("Creating account for : {}", account);
 		return ResponseEntity
 				.status(HttpStatus.CREATED)
 				.body(accountService.createAccount(account));
 	}
 
-	@Operation(summary = "Get Account by Id", responses = {
-			@ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-			 })
-	@GetMapping(value = "/{accountId}")
+	@Operation(
+			summary = "Get Account Details",
+			description =
+					"Retrieve accounts details on Account ID")
+	@ApiResponses(
+			value = {
+					@ApiResponse(
+							responseCode = "200",
+							description = "OK",
+							content =
+							@Content(
+									mediaType = "application/json",
+									schema = @Schema(implementation = String.class))),
+					@ApiResponse(
+							responseCode = "400",
+							description = "Bad Request",
+							content =
+							@Content(
+									mediaType = "application/json",
+									schema = @Schema(implementation = String.class),
+									examples =
+									@ExampleObject("Invalid format"))),
+					@ApiResponse(
+							responseCode = "404",
+							description = "Not Found",
+							content =
+							@Content(
+									mediaType = "application/json",
+									schema = @Schema(implementation = String.class),
+									examples =
+									@ExampleObject(
+											"Account with the provided ID doesnot exists"))),
+					@ApiResponse(
+							responseCode = "500",
+							description = "Internal Server Error \n",
+							content =
+							@Content(
+									mediaType = "application/json",
+									schema = @Schema(implementation = String.class),
+									examples =
+									@ExampleObject(
+											"An error occurred processing your request. Please try again.")))
+			})
+	@GetMapping(value = "/{accountId}", consumes = MediaType.ALL_VALUE)
 	public ResponseEntity<AccountDto> getAccount(@PathVariable Long accountId) {
-		logger.info("Returning account details for accound Id : " + accountId);
-		//return accountService.getAccount(accountId);
+        logger.info("Returning account details for accound Id : {}", accountId);
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(accountService.getAccount(accountId));
