@@ -3,16 +3,7 @@
 
 Application for Customer to create an Account and perform transaction to Purchase, Withdraw, Credit and Debit amount.
 
-
-## Installation
-
-Start application
-
-```bash
-sh start.sh
-```
-
-## Run Locally
+## Run Application
 
 Clone the project
 
@@ -51,7 +42,7 @@ Stop the Application
 
 ## API Reference :
 
-## Create an account
+### Create an account
 
 ```http
   POST /accounts
@@ -62,7 +53,7 @@ Stop the Application
 | :-------- | :------- | :------------------------- |
 | `document_number` | `string` | **Required**. Document Number to create an account |
 
-## Retrieve the account information
+### Retrieve the account information
 
 ```http
   GET /accounts/{accountId}
@@ -73,7 +64,7 @@ Stop the Application
 | :-------- | :------- | :-------------------------------- |
 | `account_id`      | `integer` | **Required**. Id of item to fetch |
 
-## Create an transaction
+### Create a transaction
 
 ```http
   POST /transactions
