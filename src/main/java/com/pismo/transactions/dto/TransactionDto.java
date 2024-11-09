@@ -24,7 +24,7 @@ public class TransactionDto {
 
     @NotNull(message = "Account ID is mandatory")
     @Digits(integer = Integer.MAX_VALUE, fraction = 0, message = "Account ID is mandatory")
-    @Schema(type = "string", requiredMode = Schema.RequiredMode.REQUIRED, description = "Account ID", example = "1")
+    @Schema(type = "integer", requiredMode = Schema.RequiredMode.REQUIRED, description = "Account ID", example = "1")
     private Long accountId;
 
     @NotNull(message = "Operations Type ID is mandatory. Possible values 1,2,3,4")
