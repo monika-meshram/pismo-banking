@@ -13,6 +13,11 @@ import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
 public final class TransactionMapper {
+    /**
+     * Mapper method to map fields of TransactionDTO to Transaction
+     * @param transactionDto
+     * @return
+     */
     public static Transaction dtoToEntity(TransactionDto transactionDto){
         return Transaction.builder()
                 .accountId(transactionDto.getAccountId())
@@ -22,6 +27,11 @@ public final class TransactionMapper {
                 .build();
     }
 
+    /**
+     * Mapper method to map fields of Transaction to TransactionDTO
+     * @param transaction
+     * @return
+     */
     public static TransactionDto entityToDto(Transaction transaction){
         return TransactionDto.builder()
                 .accountId(transaction.getAccountId())

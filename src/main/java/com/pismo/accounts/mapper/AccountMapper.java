@@ -14,6 +14,11 @@ import static lombok.AccessLevel.PRIVATE;
 @NoArgsConstructor(access = PRIVATE)
 public final class AccountMapper {
 
+    /**
+     * Mapper method to map fields of AccountDTO to Account
+     * @param accountDto
+     * @return
+     */
     public static Account dtoToEntity(AccountDto accountDto){
         BigDecimal balance = Objects.isNull(accountDto.getAccountId()) ? BigDecimal.ZERO : accountDto.getBalance();
         return Account.builder()
@@ -23,6 +28,11 @@ public final class AccountMapper {
                 .build();
     }
 
+    /**
+     * Mapper method to map fields of Account to AccountDTO
+     * @param account
+     * @return
+     */
     public static AccountDto entityToDto(Account account){
         return AccountDto.builder()
                 .accountId(account.getAccountId())

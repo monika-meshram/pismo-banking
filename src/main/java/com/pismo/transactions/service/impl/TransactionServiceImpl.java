@@ -32,14 +32,16 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionValidator transactionValidator;
 
-    // This method creates a transaction and updates the balance in Account table, in case of any issue while saving the transaction, the balance in account will be rolled back
-    // This method is made Serializable to take care of concurrent transactions taking place at the same time. To avoid deadlock situation, a timeout of 3sec has been added to release the acquired locks.
-
+    /**
+     * A transaction is created and associated with their respective account.
+     * This method creates a transaction and updates the balance in Account table, in case of any issue while saving the transaction, the balance in account will be rolled back.
+     * Pessimistic Locking is used ensures data consistency by preventing concurrent modifications that could lead to inconsistencies.
+     * @param transactionDto
+     * @return
+     */
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = RuntimeException.class)
-    //@Retryable(retryFor = {CannotAcquireLockException.class, ConcurrencyFailureException.class}, maxAttempts = 3, backoff = @Backoff(random = true))
     public Long createTransactions(TransactionDto transactionDto) {
-        //logger.info("Start:" + Thread.currentThread().getName());
         AccountDto accountDto = accountService.getAccount(transactionDto.getAccountId());
 
         // Account id exists validation -
@@ -60,8 +62,6 @@ public class TransactionServiceImpl implements TransactionService {
         Transaction transaction = TransactionMapper.dtoToEntity(transactionDto);
         transaction = transactionRepository.save(transaction);
         transactionDto.setTransactionId(transaction.getTransactionId());
-
-        //logger.info("End:" + Thread.currentThread().getName());
 
         return transactionDto.getTransactionId();
     }

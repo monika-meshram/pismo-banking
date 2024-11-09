@@ -39,8 +39,8 @@ public class TransactionController {
 
 
 	@Operation(
-			summary = "Create Transaction",
-			description = "Creates a Transaction .")
+			summary = " Creates a new transaction and associates it with respective Account",
+			description = "Creates a new transaction with amount & Operation Type and associates it with respective Account")
 	@ApiResponses(
 			value = {
 					@ApiResponse(

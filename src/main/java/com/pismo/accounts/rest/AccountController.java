@@ -38,8 +38,8 @@ public class AccountController {
 
 
 	@Operation(
-			summary = "Create Account",
-			description = "Creates account with Document number.")
+			summary = " Add a new Account",
+			description = " Creates account with Document number.")
 	@ApiResponses(
 			value = {
 					@ApiResponse(
@@ -78,9 +78,8 @@ public class AccountController {
 	}
 
 	@Operation(
-			summary = "Get Account Details",
-			description =
-					"Retrieve accounts details on Account ID")
+			summary = " Find Account by ID",
+			description = " Retrieve accounts details on Account ID")
 	@ApiResponses(
 			value = {
 					@ApiResponse(
