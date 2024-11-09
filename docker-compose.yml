@@ -1,8 +1,8 @@
 version: "3"
 services:
-  springboot-app:
-    # container_name: spring-app
-    image: banking-app
+  pismo-banking-apis:
+    # container_name: pismo-banking-apis
+    image: pismo-banking-apis
     restart: always
     build: .
     ports:
