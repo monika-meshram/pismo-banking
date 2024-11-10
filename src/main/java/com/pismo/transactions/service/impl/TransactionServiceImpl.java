@@ -66,7 +66,7 @@ public class TransactionServiceImpl implements TransactionService {
         return transactionDto.getTransactionId();
     }
 
-    @Override
+   /* @Override
     public TransactionDto getTransaction(Long transactionId) {
         Optional<Transaction> transaction = transactionRepository.findById(transactionId);
         if(transaction.isPresent()){
@@ -77,5 +77,5 @@ public class TransactionServiceImpl implements TransactionService {
             logger.error("Transaction with ID : " + transactionId + " does not exits.");
             throw new TransactionNotFoundException("Transaction with ID : " + transactionId + " does not exits");
         }
-    }
+    }*/
 }

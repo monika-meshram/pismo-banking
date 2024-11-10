@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "96cb761c-4592-4732-9621-0a5bc99e4d18",
+		"_postman_id": "4f7fcf43-7f11-4c23-9e91-7012e2864971",
 		"name": "PismoBankingAPIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "39620150"
@@ -21,12 +21,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8057/accounts",
+					"raw": "http://localhost:8080/accounts",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8057",
+					"port": "8080",
 					"path": [
 						"accounts"
 					]
@@ -41,12 +41,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8057/accounts/1",
+					"raw": "http://localhost:8080/accounts/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8057",
+					"port": "8080",
 					"path": [
 						"accounts",
 						"1"

@@ -29,14 +29,6 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 
-	@Hidden
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String test() {
-		logger.info("Test Method");
-		return "Working";
-	}
-
-
 	@Operation(
 			summary = " Add a new Account",
 			description = " Creates account with Document number.")

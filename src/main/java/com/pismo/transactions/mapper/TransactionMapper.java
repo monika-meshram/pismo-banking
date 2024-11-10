@@ -32,7 +32,7 @@ public final class TransactionMapper {
      * @param transaction
      * @return
      */
-    public static TransactionDto entityToDto(Transaction transaction){
+    /*public static TransactionDto entityToDto(Transaction transaction){
         return TransactionDto.builder()
                 .accountId(transaction.getAccountId())
                 .transactionId(transaction.getTransactionId())
@@ -40,5 +40,5 @@ public final class TransactionMapper {
                 .eventDate(transaction.getEventDate())
                 .operationsTypeId(transaction.getOperationsTypeId())
                 .build();
-    }
+    }*/
 }

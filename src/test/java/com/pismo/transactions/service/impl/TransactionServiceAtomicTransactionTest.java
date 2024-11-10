@@ -45,8 +45,6 @@ public class TransactionServiceAtomicTransactionTest {
         Transaction transaction = Transaction.builder().accountId(1L).amount(BigDecimal.ONE).operationsTypeId(4).build();
 
         Long accountId = accountService.createAccount(accountDto);
-        //Mockito.when(accountService.getAccount(1L)).thenReturn(accountDto);
-        Mockito.doNothing().when(transactionValidator).validateTransactionAccount(transactionDto, accountDto);
         Mockito.doNothing().when(transactionValidator).validateAccountBalanceForTransaction(transactionDto, accountDto);
         Mockito.doNothing().when(transactionValidator).validateOperationType(transactionDto.getOperationsTypeId(), transactionDto.getAmount());
 

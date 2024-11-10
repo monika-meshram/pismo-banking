@@ -31,6 +31,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(getErrorsMap(List.of(ex.getMessage())), new HttpHeaders(), HttpStatus.UNPROCESSABLE_ENTITY);
     }
 
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<Map<String, List<String>>> handleGeneralExceptions(RuntimeException ex) {
+        return new ResponseEntity<>(getErrorsMap(List.of(ex.getMessage())), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     private Map<String, List<String>> getErrorsMap(List<String> errors) {
         Map<String, List<String>> errorResponse = new HashMap<>();
         errorResponse.put("errors", errors);

@@ -30,14 +30,6 @@ public class TransactionController {
 	@Autowired
 	TransactionService transactionService;
 
-	@Hidden
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String test() {
-		logger.info("Test Method");
-		return "Working";
-	}
-
-
 	@Operation(
 			summary = " Creates a new transaction and associates it with respective Account",
 			description = "Creates a new transaction with amount & Operation Type and associates it with respective Account")
@@ -79,12 +71,12 @@ public class TransactionController {
 
 	}
 
-	@Hidden
+	/*@Hidden
 	@GetMapping(value = "/{transactionId}")
 	public ResponseEntity<TransactionDto> getTransaction(@PathVariable Long transactionId) {
 		logger.info("Getting transaction for id : " + transactionId);
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(transactionService.getTransaction(transactionId));
-	}
+	}*/
 }

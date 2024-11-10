@@ -20,18 +20,6 @@ public class TransactionValidator {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
-     * Validator method to validate if the account exits
-     * @param transactionDto
-     * @param account
-     */
-    public void validateTransactionAccount(TransactionDto transactionDto, AccountDto account){
-        if(Objects.isNull(account.getAccountId())){
-            throw new AccountNotFoundException("Account with ID : " + transactionDto.getAccountId() + " does not exit.");
-        }
-        // Check for amount - account.getAmount();
-    }
-
-    /**
      * Validator method to validate if the Operation Type and Amount provided by the customer are aligned.
      *
      * @param operationTypeId

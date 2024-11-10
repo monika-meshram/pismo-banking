@@ -48,7 +48,6 @@ public class TransactionServiceConcurrencyTest {
         Transaction transaction = Transaction.builder().accountId(1L).amount(BigDecimal.ONE).operationsTypeId(4).build();
 
         accountService.createAccount(accountDto);
-        Mockito.doNothing().when(transactionValidator).validateTransactionAccount(transactionDto, accountDto);
         Mockito.doNothing().when(transactionValidator).validateAccountBalanceForTransaction(transactionDto, accountDto);
         Mockito.doNothing().when(transactionValidator).validateOperationType(transactionDto.getOperationsTypeId(), transactionDto.getAmount());
 

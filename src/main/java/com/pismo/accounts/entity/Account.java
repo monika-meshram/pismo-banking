@@ -20,9 +20,6 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long accountId;
-
-    @NotNull
     private String documentNumber;
-
     private BigDecimal balance;
 }

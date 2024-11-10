@@ -23,17 +23,8 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long transactionId;
-
-    @NotNull(message = "Account ID is mandatory")
-    @Digits(integer = Integer.MAX_VALUE, fraction = 0, message = "Account ID is mandatory")
     private Long accountId;
-
-    @NotNull
     private int operationsTypeId;
-
-    @NotNull
     private BigDecimal amount;
-
-    @NotNull
     private LocalDateTime eventDate;
 }
