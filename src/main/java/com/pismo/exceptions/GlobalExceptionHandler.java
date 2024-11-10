@@ -26,7 +26,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({AccountNotFoundException.class,InappropriateAmountException.class, OperationNotFoundException.class,
-            TransactionNotFoundException.class, InsufficientBalanceException.class})
+            TransactionNotFoundException.class, InsufficientBalanceException.class, AccountIdNotProvidedException.class})
     public ResponseEntity<Map<String, List<String>>> handleCustomException(RuntimeException ex) {
         return new ResponseEntity<>(getErrorsMap(List.of(ex.getMessage())), new HttpHeaders(), HttpStatus.UNPROCESSABLE_ENTITY);
     }

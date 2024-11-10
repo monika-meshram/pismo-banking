@@ -24,8 +24,5 @@ public class Account {
     @NotNull
     private String documentNumber;
 
-    @NotNull
-    @NotNull(message = "Amount is mandatory")
-    @Digits(integer = 40, fraction = 2, message = "Purchase/Withdrawal Amount should be less than 10000")
     private BigDecimal balance;
 }

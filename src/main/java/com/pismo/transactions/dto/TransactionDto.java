@@ -35,8 +35,8 @@ public class TransactionDto {
     private int operationsTypeId;
 
     @NotNull(message = "Amount is mandatory")
-    @Digits(integer = 4, fraction = 2, message = "Purchase/Withdrawal Amount should be less than 10000")
-    @Schema(type = "BigDecimal", requiredMode = Schema.RequiredMode.REQUIRED, description = "Amount", example = "10000")
+    @Digits(integer = 4, fraction = 2, message = "Purchase/Withdrawal Amount should be less than 10000.00 and max upto 2 decimal points")
+    @Schema(type = "BigDecimal", requiredMode = Schema.RequiredMode.REQUIRED, description = "Amount mentioned upto 2 decimal points max", example = "9999.99")
     private BigDecimal amount;
 
     @Schema(hidden = true)

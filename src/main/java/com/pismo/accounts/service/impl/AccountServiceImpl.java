@@ -4,6 +4,7 @@ import com.pismo.accounts.dto.AccountDto;
 import com.pismo.accounts.mapper.AccountMapper;
 import com.pismo.accounts.respository.AccountRepository;
 import com.pismo.accounts.service.AccountService;
+import com.pismo.exceptions.AccountIdNotProvidedException;
 import com.pismo.exceptions.AccountNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.pismo.accounts.entity.Account;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
@@ -40,20 +42,22 @@ public class AccountServiceImpl implements AccountService {
 
     /**
      * Return Account details for the provided AccountID
-     * @param accoundId Integer value which is associated with the Account
+     * @param accountId Integer value which is associated with the Account
      * @return Account details for Account ID
      */
     @Override
-    public AccountDto getAccount(Long accoundId) {
-        Optional<Account> account = accountRepository.findById(accoundId);
+    public AccountDto getAccount(Long accountId) {
+        if(Objects.isNull(accountId)){
+            throw new AccountIdNotProvidedException("Account ID must be provided");
+        }
+        Optional<Account> account = accountRepository.findById(accountId);
         if(account.isPresent()){
             return AccountMapper.entityToDto(account.get());
         } else {
             // We can throw an Exception here, to let user know that accound with ID doesnot exits.
             // OR without letting the user know that exact cause, just log it, we can return just the empty response(Security purpose)
-            logger.error("Account with ID : " + accoundId + " does not exits.");
-            throw new AccountNotFoundException("Account with ID : " + accoundId + " does not exits");
+            logger.error("Account with ID : " + accountId + " does not exits.");
+            throw new AccountNotFoundException("Account with ID : " + accountId + " does not exits");
         }
     }
-
 }

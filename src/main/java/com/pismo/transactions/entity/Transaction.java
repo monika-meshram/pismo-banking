@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -21,8 +23,17 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long transactionId;
+
+    @NotNull(message = "Account ID is mandatory")
+    @Digits(integer = Integer.MAX_VALUE, fraction = 0, message = "Account ID is mandatory")
     private Long accountId;
+
+    @NotNull
     private int operationsTypeId;
+
+    @NotNull
     private BigDecimal amount;
+
+    @NotNull
     private LocalDateTime eventDate;
 }

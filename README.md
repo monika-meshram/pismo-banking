@@ -1,7 +1,7 @@
 
 # Pismo Banking Application
 
-Application for Customer to create an Account and perform transaction to Purchase, Withdraw, Credit and Debit amount.
+Application to create an account and perform transactions to Purchase, Withdraw, Credit and Debit amount.
 
 ## Run Application
 
@@ -80,6 +80,14 @@ Stop the Application
 
 ## Optimizations
 
-Add resilience4j
+Add resilience4j for applying rate limits on APIs
+And more!
 
+## Assumptions
+
+1. Used MySql as DB.
+2. Added an extra column Balance in Accounts table. (Had completed this before the confirmation. So, keeping it. :) )
+3. Rejected withdrawal transactions in case the account balance is already 0 or goes below 0 for this transaction.
+4. Added few exceptions -  AccountNotFound, OperationNotFound, InsufficientBalance, InappropriateAmount.
+5. Transaction amount should be less than 10000
 
